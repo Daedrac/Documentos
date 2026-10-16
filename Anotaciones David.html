@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas Poéticas - Luna Radiante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #e5e5e5;
+            font-family: 'Cormorant Garamond', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 10px;
+            color: #2c2c2c;
+        }
+
+        .controls {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .btn-print {
+            background-color: #701c1c;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background-color: #501313;
+        }
+
+        /* Contenedor de cuadrícula tipo hoja de impresión */
+        .page {
+            width: 210mm; /* Ancho A4 */
+            min-height: 297mm;
+            background: #ffffff;
+            padding: 15mm;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 12mm 10mm;
+            align-content: start;
+            justify-items: center;
+        }
+
+        /* Estilo Post-it / Tarjeta pequeña */
+        .card {
+            width: 85mm;
+            height: 85mm;
+            background-color: #fcfaf4; /* Fondo pergamino suave */
+            border: 1px dashed #b8860b; /* Línea de corte guíada */
+            padding: 12mm 10mm 8mm 10mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Simulación de cinta o adhesivo superior */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            width: 32mm;
+            height: 12px;
+            background: rgba(220, 200, 160, 0.4);
+            border-radius: 2px;
+            backdrop-filter: blur(1px);
+        }
+
+        .card-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #b8860b;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            color: #701c1c;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .card-content {
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #333333;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: pre-line;
+        }
+
+        .card-footer {
+            font-size: 0.75rem;
+            color: #b8860b;
+            margin-top: 4px;
+        }
+
+        /* Configuración estricta para impresión y PDF */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+
+            .controls {
+                display: none;
+            }
+
+            .page {
+                box-shadow: none;
+                padding: 10mm;
+                width: 100%;
+                height: 100%;
+            }
+
+            .card {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+
+            .card::before {
+                border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil para simular cinta al imprimir */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+    </div>
+
+    <div class="page">
+        <!-- Tarjeta 1 -->
+        <div class="card">
+            <span class="card-number">I / V</span>
+            <div class="card-content">Tal vez en otra vida,
+bajo otra luna,
+yo ya te había amado.
+
+Tal vez por eso, al encontrarte,
+algo en mí recordó
+lo que mi memoria ignoraba.</div>
+            <div class="card-footer">✦ · ☽ · ✦</div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="card">
+            <span class="card-number">II / V</span>
+            <div class="card-content">Desde entonces, el mundo
+es menos vasto y más hermoso:
+la tarde tiene tu luz,
+y el tiempo, cuando estás conmigo,
+olvida su costumbre de marcharse.</div>
+            <div class="card-footer">✦ · ☽ · ✦</div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="card">
+            <span class="card-number">III / V</span>
+            <div class="card-content">Hoy cumples treinta años,
+y yo quisiera darte el tiempo;
+pero el tiempo no me pertenece.
+
+Solo puedo ofrecerte estas palabras,
+y algo más difícil de nombrar:</div>
+            <div class="card-footer">✦ · ☽ · ✦</div>
+        </div>
+
+        <!-- Tarjeta 4 -->
+        <div class="card">
+            <span class="card-number">IV / V</span>
+            <div class="card-content">la certeza de que,
+entre todas las vidas
+que el azar pudo concederme,
+
+volvería a buscarte.</div>
+            <div class="card-footer">✦ · ☽ · ✦</div>
+        </div>
+
+        <!-- Tarjeta 5 -->
+        <div class="card">
+            <span class="card-number">V / V</span>
+            <div class="card-content">Y si al final de todo
+solo quedara una noche
+y una luna sobre el mundo,
+no pediría la eternidad.
+
+Me bastaría con mirarte
+y saber que estás aquí,
+que una vez nos encontramos
+y que te he amado.</div>
+            <div class="card-footer">✦ · ☽ · ✦</div>
+        </div>
+
+        <!-- Tarjeta de Portada / Cierre Opcional -->
+        <div class="card">
+            <span class="card-number">Dedicatoria</span>
+            <div class="card-title" style="margin-top: 15px;">Luna Radiante</div>
+            <div class="card-content" style="font-style: normal; font-size: 0.9rem;">
+                Un pequeño detalle poético en 5 partes para celebrar tus 30 años.
+            </div>
+            <div class="card-footer" style="margin-bottom: 5px;">♥</div>
+        </div>
+    </div>
+
+</body>
+</html>
